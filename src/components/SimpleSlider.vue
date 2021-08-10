@@ -1,6 +1,8 @@
 <template>
   <div class="simple-slider" ref="slider">
-    <div v-for="n in total" :key="n" v-show="currentSlide === n">
+    <div v-for="n in total" :key="n" v-show="currentSlide === n"
+         v-touch:swipe.right="() => navigate('previous')"
+         v-touch:swipe.left="() => navigate('next')">
       <slot :name="`slide${n}`"></slot>
     </div>
     <slot name="navigation" v-bind="{showPrevious, showNext, navigate}">
