@@ -34,9 +34,6 @@ export default {
       return this.currentSlide < this.total
     }
   },
-  mounted () {
-    console.log(this.$slots, this.$scopedSlots)
-  },
   methods: {
     navigate (direction) {
       return this[direction]()
