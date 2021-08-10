@@ -1,5 +1,5 @@
 <template>
-  <div ref="slider">
+  <div class="simple-slider" ref="slider">
     <div v-for="n in total" :key="n" v-show="currentSlide === n">
       <slot :name="`slide${n}`"></slot>
     </div>
