@@ -1,28 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div style="height: 1300px; background: blue; margin-bottom: 10rem">
+
+    </div>
+
+    <simple-slider :total="3">
+      <template #slide1>
+        <div style="height: 2000px; background: red">
+          Slide 1
+        </div>
+      </template>
+      <template #slide2>
+        <div style="height: 3000px; background: yellow">
+          Slide 2
+        </div>
+      </template>
+      <template #slide3>
+        <div style="height: 4000px; background: black">
+          Slide 3
+        </div>
+      </template>
+      <template #navigation="{showPrevious, showNext, navigate}">
+        <button v-if="showPrevious" @click="navigate('previous')">Prev 1111</button>
+        <button v-if="showNext" @click="navigate('next')">Next 22222</button>
+      </template>
+    </simple-slider>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SimpleSlider from '@/components/SimpleSlider'
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    SimpleSlider
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
