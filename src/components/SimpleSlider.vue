@@ -41,7 +41,7 @@ export default {
     navigate (direction) {
       return this[direction]()
     },
-    previous () {
+    async previous () {
       if (this.currentSlide === 1) {
         return false
       }
@@ -50,22 +50,26 @@ export default {
 
       this.$emit('previous')
 
-      this.scrollTop()
+      await this.$nextTick()
+
+      this.scrollTop(this.$refs.slider.offsetTop)
     },
-    next () {
+    async next () {
       if (this.currentSlide === this.total) {
         return false
       }
 
       this.currentSlide++
 
+      await this.$nextTick()
+
       this.$emit('next')
 
-      this.scrollTop()
+      this.scrollTop(this.$refs.slider.offsetTop)
     },
-    scrollTop () {
+    scrollTop (offset) {
       window.scrollTo({
-        top: this.$refs.slider.offsetTop,
+        top: offset,
         behavior: 'smooth'
       })
     }
