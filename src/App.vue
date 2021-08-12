@@ -4,7 +4,7 @@
 
     </div>
 
-    <simple-slider :total="3">
+    <simple-slider :total="3" :scroll-top-on-navigate="false" @next="scrollTo" @previous="scrollTo">
       <template #slide1>
         <div style="height: 2000px; background: red">
           Slide 1
@@ -34,6 +34,11 @@ import SimpleSlider from '@/components/SimpleSlider'
 export default {
   components: {
     SimpleSlider
+  },
+  methods: {
+    scrollTo () {
+      console.log('navigating')
+    }
   }
 }
 </script>

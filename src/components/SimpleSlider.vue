@@ -16,6 +16,10 @@
 export default {
   name: 'SimpleSlider',
   props: {
+    scrollTopOnNavigate: {
+      type: Boolean,
+      default: true
+    },
     total: {
       type: Number,
       default: 1
@@ -49,7 +53,9 @@ export default {
 
       await this.$nextTick()
 
-      this.scrollTop(this.$refs.slider.offsetTop)
+      if (this.scrollTopOnNavigate) {
+        this.scrollTop(this.$refs.slider.offsetTop)
+      }
     },
     async next () {
       if (this.currentSlide === this.total) {
@@ -62,7 +68,9 @@ export default {
 
       this.$emit('next')
 
-      this.scrollTop(this.$refs.slider.offsetTop)
+      if (this.scrollTopOnNavigate) {
+        this.scrollTop(this.$refs.slider.offsetTop)
+      }
     },
     scrollTop (offset) {
       window.scrollTo({
